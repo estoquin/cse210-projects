@@ -2,13 +2,14 @@ using System;
 using System.IO; 
 
 class Journal {
-    List<string> _entryList = new List<string>();
+    List<Entry> _entryList = new List<Entry>();
     
     /*
         @description
     */
     public void AddEntry(){
-        string newEntry = Entry.GenerateEntry();
+        Entry newEntry = new Entry();
+        newEntry.GenerateEntry();
         _entryList.Add(newEntry);
         Console.WriteLine("Entry added!");
         Console.WriteLine("----------------------------------------------------------------");
@@ -23,8 +24,8 @@ class Journal {
             Console.WriteLine("No entries on the journal, add one or read from file");
         } else {
             Console.WriteLine("Journal Entries: \n");
-            foreach (string entry in _entryList) {
-                Console.WriteLine($"\n{entry}");
+            foreach (Entry entry in _entryList) {
+                Console.WriteLine($"\nDate: {entry._entryDate.ToString("yyyy-MM-dd")} - Prompt: {entry._entryPrompt}\n{entry._entryText}");
             }
             Console.WriteLine($"\nTotal Entries: {_entryList.Count}");
         }
@@ -37,18 +38,13 @@ class Journal {
         Console.WriteLine("What is the filename?");
         string fileName = Console.ReadLine();
         string[] lines = System.IO.File.ReadAllLines(fileName);
-        string entryToAdd = "";
-        foreach (string line in lines) {
-            if (entryToAdd == ""){
-                entryToAdd = $"{line}";
-            } else {
-                entryToAdd = $"{entryToAdd}\n{line}";
-            }
-            int elementNumber = Array.IndexOf(lines, line);
-            if ((elementNumber != 0) && ((elementNumber % 2) != 0)){
-                _entryList.Add(entryToAdd);
-                entryToAdd = "";
-            }
+        this._entryList.Clear();
+        foreach (string line in lines){
+            Entry loadedEntry = new Entry();
+            loadedEntry._entryDate = Convert.ToDateTime(line.Split("\t")[0]);
+            loadedEntry._entryPrompt = line.Split("\t")[1];
+            loadedEntry._entryText = line.Split("\t")[2];
+            this._entryList.Add(loadedEntry);
         }
         Console.WriteLine("File readed...");
         Console.WriteLine("----------------------------------------------------------------");
@@ -61,8 +57,8 @@ class Journal {
         Console.WriteLine("What is the filename?");
         string fileName = Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter(fileName)) {
-            foreach (string entry in _entryList) {
-                outputFile.WriteLine(entry);
+            foreach (Entry entry in _entryList) {
+                outputFile.WriteLine($"{entry._entryDate}\t{entry._entryPrompt}\t{entry._entryText}");
             }
         }
         Console.WriteLine($"Journal Saved to {fileName}");

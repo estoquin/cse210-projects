@@ -8,10 +8,18 @@ class Entry {
         What was the strongest emotion I felt today?
         If I had one thing I could do over today, what would it be?
     */
+
+    public DateTime _entryDate = new DateTime();
+    public string _entryText;
+    public string _entryPrompt;
     
 
-    public static string GenerateEntry(){
+    public void GenerateEntry(){
 
+        // Date
+        this._entryDate = DateTime.Now;
+
+        // Prompt
         string[] _prompts = new string[] {
             "Who was the most interesting person I interacted with today?",
             "What was the best part of my day?",
@@ -19,14 +27,13 @@ class Entry {
             "What was the strongest emotion I felt today?",
             "If I had one thing I could do over today, what would it be?"
         };
-
         Random rnd = new Random();
-        DateTime now = DateTime.Now;
-        string strDate = now.ToString("yyyy-MM-dd");
         string selectedPrompt = _prompts[rnd.Next(0, _prompts.Length)];
+        this._entryPrompt = selectedPrompt;
+
+        // Response
         Console.WriteLine(selectedPrompt);
         string response = Console.ReadLine();
-        string formatToSave = $"Date: {strDate} - Prompt: {selectedPrompt}\n{response}";
-        return formatToSave;
+        this._entryText = response;
     }
 }
