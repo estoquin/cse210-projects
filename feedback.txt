@@ -1,0 +1,2 @@
+Design on week3
+It's a little wierd that you have a list of Journal unless you plan on writing a program that has multiple journals which I would advise against--just havec Program have: _journal: Journal. also, don't call "JournalEntry" "JournalEntry"--it is redundant. Just call it Entry.
