@@ -4,6 +4,7 @@ class Scripture {
 
   private Reference _reference;
   private List<Word> _words;
+  private List<int> _hidden;
 
 
 
@@ -16,6 +17,8 @@ class Scripture {
         totalWords.Add(w);
     }
     this._words = totalWords;
+    List<int> hidden = new List<int>(){-1};
+    this._hidden = hidden;
   }
 
   public void DisplayScripture(){
@@ -32,9 +35,13 @@ class Scripture {
     int listSize = this._words.Count;
     Random r = new Random();
     int rInt = r.Next(0, listSize);
+    while(this._hidden.Contains(rInt)){
+        rInt = r.Next(0, listSize);
+    }
     Word w = this._words[rInt];
     if (!(w.IsHidden())){
         w.HideWord();
+        this._hidden.Add(rInt);
         this._words[rInt] = w;
     }
     }
