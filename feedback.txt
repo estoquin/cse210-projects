@@ -1,2 +1,4 @@
-Design on week3
-It's a little wierd that you have a list of Journal unless you plan on writing a program that has multiple journals which I would advise against--just havec Program have: _journal: Journal. also, don't call "JournalEntry" "JournalEntry"--it is redundant. Just call it Entry.
+ To fix dotnet installation in ubuntu, remove all, get clean installation.
+ Set one package source to install (Microsoft and ubuntu are two differents)
+ And install all from the same, if not, you'll have mixed packages.
+https://stackoverflow.com/questions/73753672/a-fatal-error-occurred-the-folder-usr-share-dotnet-host-fxr-does-not-exist
