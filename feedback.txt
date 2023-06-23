@@ -2,3 +2,23 @@
  Set one package source to install (Microsoft and ubuntu are two differents)
  And install all from the same, if not, you'll have mixed packages.
 https://stackoverflow.com/questions/73753672/a-fatal-error-occurred-the-folder-usr-share-dotnet-host-fxr-does-not-exist
+
+First, remove all existing packages to get to a clean state:
+
+sudo apt remove dotnet*
+sudo apt remove aspnetcore*
+sudo apt remove netstandard*
+
+Then, create a file in /etc/apt/preferences.d (I named mine 99microsoft-dotnet.pref, 
+following the convention that files in such *.d 
+directories are typically prefixed with a 
+2-digit number so that they sort and load in a predictable order) with the following contents:
+
+Package: *
+Pin: origin "packages.microsoft.com"
+Pin-Priority: 1001
+
+Then, the regular update & install:
+
+sudo apt update
+sudo apt install dotnet-sdk-6.0

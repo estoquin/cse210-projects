@@ -2,63 +2,76 @@ using System;
 
 public abstract class Goal {
 
-    private string _name;
-    private string _description;
-    private int _points;
-    private bool _completed;
+	private string _name;
+	private string _description;
+	private int _points;
+	private bool _completed;
+	private string _type; // sg, eg, cg
 
-    public Goal()
-    {
-        // this._name = name;
-        // this._description = description;
-        // this._points = points;
-        // this._completed = false;
-    }
+	public Goal()
+	{
 
-    public bool GetCompleted()
-    {
-        return this._completed;
-    }
+	}
 
-    public string GetName()
-    {
-        return this._name;
-    }
+	public bool GetCompleted()
+	{
+		return this._completed;
+	}
 
-    public string GetDescription()
-    {
-        return this._description;
-    }
+	public void SetCompleted(bool completed)
+	{
+		this._completed = completed;
+	}
 
-    public void SetCompleted(bool completed)
-    {
-        this._completed = completed;
-    }
+	public string GetName()
+	{
+		return this._name;
+	}
 
-    public void SetName()
-    {
-        Console.WriteLine("What is the name of your goal?: ");
-        this._name = Console.ReadLine();
-    }
+	public void SetName(string name)
+	{
+		this._name = name;
+	}
 
-    public void SetPoints()
-    {
-        Console.WriteLine("What is the amount of points associated with this goal?: ");
-        this._points = int.Parse(Console.ReadLine());
-    }
+	public string GetDescription()
+	{
+		return this._description;
+	}
 
-    public int GetPoints()
-    {
-        return this._points;
-    }
+	public void SetDescription(string description)
+	{
+		this._description = description;
+	}
 
-    public void SetDescription()
-    {
-        Console.WriteLine("What is a short description of it?: ");
-        this._description = Console.ReadLine();
-    }
 
-    public abstract void DisplayGoal(int index);
+	public string GetType()
+	{
+		return this._type;
+	}
 
-    public abstract void ConfigureGoal();
+	public void SetType(string type)
+	{
+		this._type = type;
+	}
+
+	public void SetPoints(int points)
+	{
+		this._points = points;
+	}
+
+	public int GetPoints()
+	{
+		return this._points;
+	}
+
+	
+	public abstract void CompleteGoal(); 
+
+	public abstract void DisplayGoal(int index);
+
+	public abstract void ConfigureGoal();
+
+	public abstract string FormatLine();
+
+	public abstract int GetEarnedPoints();
 }
