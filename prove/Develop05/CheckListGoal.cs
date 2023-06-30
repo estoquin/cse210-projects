@@ -84,7 +84,7 @@ public class CheckListGoal:Goal{
 
 	public override string FormatLine()
 	{
-		return $"{GetType()}\t{GetName()}\t{GetDescription()}\t{GetCompleted()}\t{GetPoints()}\t{GetTotal()}\t{GetCurrent()}\t{GetBonus()}";
+		return $"{GetType()}\t{GetName()}\t{GetDescription()}\t{GetCompleted()}\t{GetPoints()}\t{GetTotal()}\t{GetCurrent()}\t{GetBonus()}\tnull";
 	}
 
 	public override void DisplayGoal(int index)

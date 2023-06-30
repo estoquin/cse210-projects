@@ -42,7 +42,7 @@ public class SimpleGoal:Goal{
 
 	public override string FormatLine()
 	{
-		return $"{GetType()}\t{GetName()}\t{GetDescription()}\t{GetCompleted()}\t{GetPoints()}";
+		return $"{GetType()}\t{GetName()}\t{GetDescription()}\t{GetCompleted()}\t{GetPoints()}\tnull\tnull\tnull\tnull";
 	}
 
 	public override void DisplayGoal(int index)

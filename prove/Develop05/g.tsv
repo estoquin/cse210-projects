@@ -1,4 +1,0 @@
-type	name	description	completed	points	cg_total	cg_current	cg_bonus
-sg	run	run more	False	10
-eg	jump	jump more	False	20
-cg	eat	eat more	False	40	3	0	500

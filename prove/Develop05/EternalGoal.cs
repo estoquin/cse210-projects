@@ -2,8 +2,19 @@ using System;
 
 public class EternalGoal:Goal {
 
+	private int _recordedTimes;
 	public EternalGoal():base(){
+		this._recordedTimes = 0;
+	}
 
+	public void SetRecordedTimes(int times)
+	{
+		this._recordedTimes = times;
+	}
+
+	public int GetRecordedTimes()
+	{
+		return this._recordedTimes;
 	}
 
 	public override void ConfigureGoal()
@@ -19,28 +30,23 @@ public class EternalGoal:Goal {
 		Console.Write("What is the amount of points associated with this goal?: ");
 		SetPoints(int.Parse(Console.ReadLine()));
 		
+		SetRecordedTimes(0);
+
 		Console.WriteLine("Goal added!");
 	}
 
 	public override int GetEarnedPoints()
     {
-		if(GetCompleted())
-		{
-			return GetPoints();
-		}
-		else 
-		{
-			return 0;
-		}
+			return GetPoints() * this._recordedTimes;
     }
 	public override void CompleteGoal()
 	{
-		SetCompleted(true);
+		this._recordedTimes = this._recordedTimes + 1;
 	}
 
 	public override string FormatLine()
 	{
-		return $"{GetType()}\t{GetName()}\t{GetDescription()}\t{GetCompleted()}\t{GetPoints()}";
+		return $"{GetType()}\t{GetName()}\t{GetDescription()}\tfalse\t{GetPoints()}\tnull\tnull\tnull\t{GetRecordedTimes()}";
 	}
 
 	public override void DisplayGoal(int index)

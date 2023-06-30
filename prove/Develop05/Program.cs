@@ -2,7 +2,7 @@ using System;
 
 class Program
 {
-
+	
 	static void Main(string[] args)
 	{
 		string option = "0";
@@ -38,7 +38,6 @@ class Program
 			}
 			else if((option != "1") && (option != "2") && (option != "3") && (option != "4") && (option != "5")){
 				Console.WriteLine("Please select a valid option!");
-				Console.ReadLine();
 			}
 			Console.WriteLine("\n(Press key to continue...)");
 			Console.ReadLine();
@@ -104,8 +103,8 @@ class Program
 						g.SetType(fields[0]);
 						g.SetName(fields[1]);
 						g.SetDescription(fields[2]);
-						g.SetCompleted(bool.Parse(fields[3]));
 						g.SetPoints(int.Parse(fields[4]));
+						g.SetRecordedTimes(int.Parse(fields[8]));
 						goalsList.Add(g);
 					}
 					else if(fields[0]=="cg")
@@ -143,7 +142,7 @@ class Program
 			filePath = $"./{filePath}.tsv";
 			using (StreamWriter writer = new StreamWriter(filePath))
 			{
-				writer.WriteLine("type\tname\tdescription\tcompleted\tpoints\tcg_total\tcg_current\tcg_bonus");
+				writer.WriteLine("type\tname\tdescription\tcompleted\tpoints\tcg_total\tcg_current\tcg_bonus\te_recorded");
 				foreach(Goal g in goals)
 				{
 					writer.WriteLine(g.FormatLine());

@@ -1,0 +1,4 @@
+type	name	description	completed	points	cg_total	cg_current	cg_bonus	e_recorded
+sg	run	run more	True	20	null	null	null	null
+eg	jump	jump more	false	30	null	null	null	4
+cg	eat	eat more	True	30	3	3	500	null
