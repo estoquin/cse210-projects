@@ -45,10 +45,13 @@ class Video
 
     public void DisplayVideoInfo()
     {
-        Console.WriteLine("\n---------------------------------------------");
+        Console.WriteLine("\n---------------------------------------------------------");
+
+        int minutes = this._length / 60;
+        int seconds = this._length % 60;
         Console.WriteLine($"Title: {this._title}");
         Console.WriteLine($"Author: {this._author}");
-        Console.WriteLine($"Length (seconds): {this._length}");
+        Console.WriteLine($"Length: {minutes} minutes with {seconds} seconds ({this._length}s)");
         
         if(this._comments.Count > 0)
         {
