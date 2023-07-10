@@ -1,0 +1,7 @@
+class ReceptionEvent
+{
+    public ReceptionEvent()
+    {
+        
+    }
+}

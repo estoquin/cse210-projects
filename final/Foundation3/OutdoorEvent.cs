@@ -1,0 +1,7 @@
+class OutdoorEvent
+{
+    public OutdoorEvent()
+    {
+        
+    }
+}
